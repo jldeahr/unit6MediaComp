@@ -217,6 +217,28 @@ public class Picture extends SimplePicture
     }
   }
   
+  /**
+   * returns the number of times a passed integer is found in the matrix
+   * 
+   * @pre matrix is created
+   * @post largest is returned
+   * @return largest - the largest int in the array
+   */
+  public void mirrorVerticalRightToLeft()
+  {
+      int largest = 0;
+      for (int row = 0; row < matrix.length; row++)
+      {
+          for (int col = 0; col < matrix[0].length; col++)
+          {
+              if (largest < matrix[row][col])
+              {
+                  largest = matrix[row][col];
+              }
+          }
+      }
+      return largest;
+  }
   
   /* Main method for testing - each class in Java can have a main 
    * method 

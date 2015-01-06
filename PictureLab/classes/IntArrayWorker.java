@@ -98,5 +98,70 @@ public class IntArrayWorker
       }
     }
   }
- 
+  
+  /**
+   * returns the number of times a passed int is found in the matrix
+   * 
+   * @pre matrix is created
+   * @post count is returned
+   * @param check - the int used to check for count
+   * @return count - the count of how many times check was found in the matrix
+   */
+  
+  public int getCount(int check)
+  {
+      int count = 0;
+      for (int row = 0; row < matrix.length; row++)
+      {
+          for (int col = 0; col < matrix[0].length; col++)
+          {
+              if (check == matrix[row][col])
+              {
+                  count++;
+              }
+          }
+      }
+      return count;
+  }
+  
+  /**
+   * returns largest int in the matrix
+   * 
+   * @pre matrix is created
+   * @post largest is returned
+   * @return largest - the largest int in the array
+   */
+  public int getLargest()
+  {
+      int largest = 0;
+      for (int row = 0; row < matrix.length; row++)
+      {
+          for (int col = 0; col < matrix[0].length; col++)
+          {
+              if (largest < matrix[row][col])
+              {
+                  largest = matrix[row][col];
+              }
+          }
+      }
+      return largest;
+  }
+  
+  /**
+   * returns the total of all ints in a specified column
+   * 
+   * @pre matrix is created
+   * @post largest is returned
+   * @param col - the column for the ints
+   * @return total - total of all the ints
+   */
+  public int getColTotal(int col)
+  {
+      int total = 0;
+      for (int row = 0; row < matrix.length; row++)
+      {
+          total += matrix[row][col];
+      }
+      return total;
+  }
 }
