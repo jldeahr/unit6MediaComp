@@ -215,29 +215,53 @@ public class Picture extends SimplePicture
           leftPixel.setColor(Color.WHITE);
       }
     }
-  }
+    }
   
   /**
-   * returns the number of times a passed integer is found in the matrix
+   * mirrors a picture around a mirror placed vertically from right to left
    * 
-   * @pre matrix is created
-   * @post largest is returned
-   * @return largest - the largest int in the array
+   * @pre pixels is created
+   * @post picture is mirrored over the y-axis
    */
   public void mirrorVerticalRightToLeft()
   {
-      int largest = 0;
-      for (int row = 0; row < matrix.length; row++)
+    Pixel[][] pixels = this.getPixels2D();
+    Pixel leftPixel = null;
+    Pixel rightPixel = null;
+    int width = pixels[0].length;
+    for (int row = 0; row < pixels.length; row++)
+    {
+      for (int col = 0; col < width / 2; col++)
       {
-          for (int col = 0; col < matrix[0].length; col++)
-          {
-              if (largest < matrix[row][col])
-              {
-                  largest = matrix[row][col];
-              }
-          }
+        leftPixel = pixels[row][col];
+        rightPixel = pixels[row][width - 1 - col];
+        rightPixel.setColor(leftPixel.getColor());
       }
-      return largest;
+    } 
+  }
+  
+  /**
+   * mirrors a picture around a mirror placed horizontally at the middle of the height
+   * of the picture
+   * 
+   * @pre pixels is created
+   * @post picture is mirrored over the x-axis
+   */
+  public void mirrorHorizontal()
+  {
+    Pixel[][] pixels = this.getPixels2D();
+    Pixel topPixel = null;
+    Pixel bottomPixel = null;
+    int height = pixels.length;
+    for (int row = 0; row < height / 2; row++)
+    {
+      for (int col = 0; col < pixels[0].length; col++)
+      {
+        topPixel = pixels[row][col];
+        bottomPixel = pixels[height - 1 - row][col];
+        bottomPixel.setColor(bottomPixel.getColor());
+      }
+    } 
   }
   
   /* Main method for testing - each class in Java can have a main 
@@ -245,10 +269,10 @@ public class Picture extends SimplePicture
    */
   public static void main(String[] args) 
   {
-    Picture beach = new Picture("kali.jpg");
-    beach.explore();
-    beach.zeroBlue();
-    beach.explore();
+    Picture kali = new Picture("kali.jpg");
+    kali.explore();
+    kali.zeroBlue();
+    kali.explore();
   }
   
 } // this } is the end of class Picture, put all new methods before this

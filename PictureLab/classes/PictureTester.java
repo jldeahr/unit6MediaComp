@@ -51,6 +51,22 @@ public class PictureTester
     swan.explore();
   }
   
+  /** Method to test mirrorVerticalRightToLeft */
+  public static void testMirrorVerticalRightToLeft()
+  {
+      Picture kali = new Picture("kali.jpg");
+      kali.mirrorVerticalRightToLeft();
+      kali.explore();
+  }
+  
+  /** Method to test mirrorHorizontal */
+  public static void testMirrorHorizontal()
+  {
+      Picture kali = new Picture("kali.jpg");
+      kali.mirrorHorizontal();
+      kali.explore();
+  }
+  
   /** Main method for testing.  Every class can have a main
     * method in Java */
   public static void main(String[] args)
@@ -59,6 +75,8 @@ public class PictureTester
     // and comment out the ones you don't want
     // to run
     testZeroBlue();
+    testMirrorVerticalRightToLeft();
+    testMirrorHorizontal();
     //testKeepOnlyBlue();
     //testKeepOnlyRed();
     //testKeepOnlyGreen();
