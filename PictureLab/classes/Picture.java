@@ -315,7 +315,7 @@ public class Picture extends SimplePicture
             }
         } 
     }
-    
+
     /**
      * mirrors the arms of the snowman
      * 
@@ -325,21 +325,71 @@ public class Picture extends SimplePicture
     public void mirrorArms()
     {
         Pixel[][] pixels = this.getPixels2D();
-        Pixel prevPixel = null;
-        Pixel newPixel = null;
-        int height = pixels.length;
-        for (int row = 0; row < height; row++)
+        Pixel topPixel = null;
+        Pixel bottomPixel = null;
+        int mirrorPoint1 = 194;
+        int mirrorPoint2 = 292;
+        for (int row = 162; row < 194; row++)
         {
-            for (int col = 0; col < pixels[0].length; col++)
+            for (int col = 104; col < 170; col++)
             {
-                if(col < row)
-                {
-                    prevPixel = pixels[row][col];
-                    newPixel = pixels[col][row];
-                    newPixel.setColor(prevPixel.getColor());
-                }
+                topPixel = pixels[row][col];
+                bottomPixel = pixels[mirrorPoint1 - row + mirrorPoint1][col];
+                bottomPixel.setColor(topPixel.getColor());
             }
-        } 
+        }
+
+        for (int row = 162; row < 194; row++)
+        {
+            for (int col = 236; col < 294; col++)
+            {
+                topPixel = pixels[row][col];
+                bottomPixel = pixels[mirrorPoint1 - row + mirrorPoint1][col];
+                bottomPixel.setColor(topPixel.getColor());
+            }
+        }
+    }
+
+    /**
+     * mirrors a seagull
+     * 
+     * @pre pixels is created
+     * @post seagull is mirrored to the right
+     */
+    public void mirrorGull()
+    {
+        Pixel[][] pixels = this.getPixels2D();
+        Pixel topPixel = null;
+        Pixel bottomPixel = null;
+        int mirrorPoint = 346;
+        for (int row = 234; row < 320; row++)
+        {
+            for (int col = 237; col < 343; col++)
+            {
+                topPixel = pixels[row][col];
+                bottomPixel = pixels[row][mirrorPoint - col + mirrorPoint];
+                bottomPixel.setColor(topPixel.getColor());
+            }
+        }
+    }
+
+    /**
+     * keeps only blue pixels
+     * 
+     * @pre pixels is created
+     * @post image only has blue pixels
+     */
+    public void keepOnlyBlue()
+    {
+        Pixel[][] pixels = this.getPixels2D();
+        for (Pixel[] rowArray : pixels)
+        {
+            for (Pixel pixelObj : rowArray)
+            {
+                pixelObj.setGreen(0);
+                pixelObj.setRed(0);
+            }
+        }
     }
 
     /* Main method for testing - each class in Java can have a main 

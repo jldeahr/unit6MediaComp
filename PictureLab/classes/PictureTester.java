@@ -92,6 +92,24 @@ public class PictureTester
         kali.explore();
     }
     
+    /** Method to test testMirrorGull */
+    public static void testMirrorGull()
+    {
+        Picture kali = new Picture("seagull.jpg");
+        kali.explore();
+        kali.mirrorGull();
+        kali.explore();
+    }
+    
+    /** Method to test testKeepOnlyBlue */
+    public static void testKeepOnlyBlue()
+    {
+        Picture kali = new Picture("seagull.jpg");
+        kali.explore();
+        kali.keepOnlyBlue();
+        kali.explore();
+    }
+    
     /** Main method for testing.  Every class can have a main
      * method in Java */
     public static void main(String[] args)
@@ -104,7 +122,7 @@ public class PictureTester
         testMirrorHorizontal();
         testMirrorHorizontalBottomToTop();
         testMirrorDiagonal();
-        //testKeepOnlyBlue();
+        testKeepOnlyBlue();
         //testKeepOnlyRed();
         //testKeepOnlyGreen();
         //testNegate();
@@ -113,7 +131,7 @@ public class PictureTester
         //testMirrorVertical();
         testMirrorTemple();
         testMirrorArms();
-        //testMirrorGull();;
+        testMirrorGull();;
         //testCollage();
         //testCopy();
         //testEdgeDetection();
