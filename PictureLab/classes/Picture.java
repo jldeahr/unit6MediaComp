@@ -391,7 +391,92 @@ public class Picture extends SimplePicture
             }
         }
     }
+    
+    /**
+     * negates all pixels in image
+     * 
+     * @pre pixels is created
+     * @post image negative is created
+     */
+    public void negate()
+    {
+        Pixel[][] pixels = this.getPixels2D();
+        int green = 0;
+        int red = 0;
+        int blue = 0;
+        for (Pixel[] rowArray : pixels)
+        {
+            for (Pixel pixelObj : rowArray)
+            {
+                green = pixelObj.getGreen();
+                red = pixelObj.getRed();
+                blue = pixelObj.getBlue();               
+                
+                pixelObj.setGreen(255 - green);
+                pixelObj.setRed(255 - red);
+                pixelObj.setBlue(255 - blue);
+            }
+        }
+    }
+    
+    /**
+     * turns picture into shades of gray
+     * 
+     * @pre pixels is created
+     * @post image grayscale is created
+     */
+    public void grayscale()
+    {
+        Pixel[][] pixels = this.getPixels2D();
+        int green = 0;
+        int red = 0;
+        int blue = 0;
+        int average = 0;
+        for (Pixel[] rowArray : pixels)
+        {
+            for (Pixel pixelObj : rowArray)
+            {
+                green = pixelObj.getGreen();
+                red = pixelObj.getRed();
+                blue = pixelObj.getBlue();
+                average = 255 - ((green + red + blue) / 3);
+                pixelObj.setGreen(average);
+                pixelObj.setRed(average);
+                pixelObj.setBlue(average);
+            }
+        }
+    }
+    
+    /**
+     * fixes images so fish are seen better
+     * 
+     * @pre pixels is created
+     * @post fish can be seen better
+     */
+    public void fixUnderwater()
+    {
+        Pixel[][] pixels = this.getPixels2D();
+        for (Pixel[] rowArray : pixels)
+        {
+            for (Pixel pixelObj : rowArray)
+            {
+                pixelObj.setBlue(pixelObj.getBlue() - 25);
+                pixelObj.setGreen(pixelObj.getGreen() - 45);
+            }
+        }
+    }
 
+    /**
+     * 
+     * 
+     */
+    public void cropAndCopy(Picture sourcePicture, int startSourceRow, int endSourceRow,
+                            int startSourceCol, int endSourceCol, int startDestRow,
+                            int startDestCol)
+           {
+             
+            }
+    
     /* Main method for testing - each class in Java can have a main 
      * method 
      */

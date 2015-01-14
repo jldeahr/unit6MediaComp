@@ -110,6 +110,33 @@ public class PictureTester
         kali.explore();
     }
     
+    /** Method to test testNegate */
+    public static void testNegate()
+    {
+        Picture kali = new Picture("kali.jpg");
+        kali.explore();
+        kali.negate();
+        kali.explore();
+    }
+    
+    /** Method to test testGrayscale */
+    public static void testGrayscale()
+    {
+        Picture kali = new Picture("kali.jpg");
+        kali.explore();
+        kali.grayscale();
+        kali.explore();
+    }
+    
+    /** Method to test testFixUnderwater */
+    public static void testFixUnderwater()
+    {
+        Picture kali = new Picture("water.jpg");
+        kali.explore();
+        kali.fixUnderwater();
+        kali.explore();
+    }
+    
     /** Main method for testing.  Every class can have a main
      * method in Java */
     public static void main(String[] args)
@@ -125,8 +152,8 @@ public class PictureTester
         testKeepOnlyBlue();
         //testKeepOnlyRed();
         //testKeepOnlyGreen();
-        //testNegate();
-        //testGrayscale();
+        testNegate();
+        testGrayscale();
         //testFixUnderwater();
         //testMirrorVertical();
         testMirrorTemple();
