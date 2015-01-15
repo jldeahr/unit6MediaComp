@@ -467,15 +467,27 @@ public class Picture extends SimplePicture
     }
 
     /**
+     * copies a region of the specified source Picture object into this Picture object
+     * at the specified location
      * 
+     * @pre pixels is created
+     * @post picture is cropped
      * 
      */
     public void cropAndCopy(Picture sourcePicture, int startSourceRow, int endSourceRow,
                             int startSourceCol, int endSourceCol, int startDestRow,
                             int startDestCol)
-           {
-             
-            }
+    {
+        Picture destPicture = this.copy(pixelsSource, startDestRow, startDestCol);
+        
+//         for (int row = startSourceRow; row <= endSourceRow; row++)
+//         {
+//             for (int col = startSourceCol; col <= endSourceCol; col++)
+//             {
+//                 pixelsDestination[startDestRow + row][startDestCol + col] = pixelsSource[row][col];
+//             }
+//         }
+    }
     
     /* Main method for testing - each class in Java can have a main 
      * method 

@@ -137,6 +137,15 @@ public class PictureTester
         kali.explore();
     }
     
+    /** Method to test testCropAndCopy */
+    public static void testCropAndCopy()
+    {
+        Picture kali = new Picture("kali.jpg");
+        kali.explore();
+        kali.cropAndCopy(kali, 10, 100, 20, 200, 30, 40);
+        kali.explore();
+    }
+        
     /** Main method for testing.  Every class can have a main
      * method in Java */
     public static void main(String[] args)
@@ -169,5 +178,6 @@ public class PictureTester
         //testSetRedToHalfValueInTopHalf();
         //testClearBlueOverValue(200);
         //testGetAverageForColumn(0);
+        testCropAndCopy();
     }
 }
