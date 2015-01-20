@@ -465,20 +465,146 @@ public class Picture extends SimplePicture
             }
         }
     }
-
+    
     /**
-     * copies a region of the specified source Picture object into this Picture object
-     * at the specified location
+     * keeps only red pixels
      * 
      * @pre pixels is created
-     * @post picture is cropped
-     * 
+     * @post image only has red pixels
      */
-    public void cropAndCopy(Picture sourcePicture, int startSourceRow, int endSourceRow,
-                            int startSourceCol, int endSourceCol, int startDestRow,
-                            int startDestCol)
+    public void keepOnlyRed()
     {
-        Picture destPicture = this.copy(pixelsSource, startDestRow, startDestCol);
+        Pixel[][] pixels = this.getPixels2D();
+        for (Pixel[] rowArray : pixels)
+        {
+            for (Pixel pixelObj : rowArray)
+            {
+                pixelObj.setGreen(0);
+                pixelObj.setBlue(0);
+            }
+        }
+    }
+    
+    /**
+     * keeps only green pixels
+     * 
+     * @pre pixels is created
+     * @post image only has green pixels
+     */
+    public void keepOnlyGreen()
+    {
+        Pixel[][] pixels = this.getPixels2D();
+        for (Pixel[] rowArray : pixels)
+        {
+            for (Pixel pixelObj : rowArray)
+            {
+                pixelObj.setRed(0);
+                pixelObj.setBlue(0);
+            }
+        }
+    }
+    
+    /** Method to set the red to 0 */
+    public void zeroRed()
+    {
+        Pixel[][] pixels = this.getPixels2D();
+        for (Pixel[] rowArray : pixels)
+        {
+            for (Pixel pixelObj : rowArray)
+            {
+                pixelObj.setRed(0);
+            }
+        }
+    }
+    
+    /** Method to set the green to 0 */
+    public void zeroGreen()
+    {
+        Pixel[][] pixels = this.getPixels2D();
+        for (Pixel[] rowArray : pixels)
+        {
+            for (Pixel pixelObj : rowArray)
+            {
+                pixelObj.setGreen(0);
+            }
+        }
+    }
+    
+    /** Method to posterize the picture */
+    public void posterize()
+    {
+        Pixel[][] pixels = this.getPixels2D();
+        for (int row = 0; row < pixels.length; row++)
+        {
+            for (int col = 0; col < width / 2; col++)
+            {
+                if (pixels[row][col].getGreen >= 0 && pixels[row][col].getGreen <= 63)
+                {
+                    pixels[row][col]setGreen == 25;                    
+                }
+                else if (pixels[row][col].getGreen >= 64 && pixels[row][col].getGreen <= 127)
+                {
+                    pixels[row][col]setGreen == 75;
+                }
+                else if (pixels[row][col].getGreen >= 128 && pixels[row][col].getGreen <= 191)
+                {
+                    pixels[row][col]setGreen == 150;
+                }
+                else if (pixels[row][col].getGreen >= 129 && pixels[row][col].getGreen <= 255)
+                {
+                    pixels[row][col]setGreen == 200;
+                }
+                
+                if (pixels[row][col].getRed == 0 && pixels[row][col].getRed <= 63)
+                {
+                    pixels[row][col]setRed == 25;
+                }
+                else if (pixels[row][col].getRed == 0 && pixels[row][col].getRed <= 127)
+                {
+                    pixels[row][col]setRed == 25;
+                }
+                else if (pixels[row][col].getRed == 0 && pixels[row][col].getRed <= 191)
+                {
+                    pixels[row][col]setRed == 25;
+                }
+                else if (pixels[row][col].getRed == 0 && pixels[row][col].getRed <= 255)
+                {
+                    pixels[row][col]setRed == 25;
+                }
+                
+                if (pixels[row][col].getBlue == 0 && pixels[row][col].getBlue <= 63)
+                {
+                    pixels[row][col]setBlue == 25;
+                }
+                else if (pixels[row][col].getBlue == 0 && pixels[row][col].getBlue <= 127)
+                {
+                    pixels[row][col]setBlue == 25;
+                }
+                else if (pixels[row][col].getBlue == 0 && pixels[row][col].getBlue <= 191)
+                {
+                    pixels[row][col]setBlue == 25;
+                }
+                else if (pixels[row][col].getBlue == 0 && pixels[row][col].getBlue <= 255)
+                {
+                    pixels[row][col]setBlue == 25;
+                }
+            }
+        } 
+    }
+
+//     /**
+//      * copies a region of the specified source Picture object into this Picture object
+//      * at the specified location
+//      * 
+//      * @pre pixels is created
+//      * @post picture is cropped
+//      * 
+//      */
+//     public void cropAndCopy(Picture sourcePicture, int startSourceRow, int endSourceRow,
+//                             int startSourceCol, int endSourceCol, int startDestRow,
+//                             int startDestCol)
+//     {
+//        Picture destPicture = this.copy(pixelsSource, startDestRow, startDestCol);
         
 //         for (int row = startSourceRow; row <= endSourceRow; row++)
 //         {
@@ -487,7 +613,7 @@ public class Picture extends SimplePicture
 //                 pixelsDestination[startDestRow + row][startDestCol + col] = pixelsSource[row][col];
 //             }
 //         }
-    }
+//    }
     
     /* Main method for testing - each class in Java can have a main 
      * method 

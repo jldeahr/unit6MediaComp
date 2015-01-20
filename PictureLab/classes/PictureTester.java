@@ -137,14 +137,50 @@ public class PictureTester
         kali.explore();
     }
     
-    /** Method to test testCropAndCopy */
-    public static void testCropAndCopy()
+    /** Method to test testKeepOnlyRed */
+    public static void testKeepOnlyRed()
     {
-        Picture kali = new Picture("kali.jpg");
+        Picture kali = new Picture("seagull.jpg");
         kali.explore();
-        kali.cropAndCopy(kali, 10, 100, 20, 200, 30, 40);
+        kali.keepOnlyRed();
         kali.explore();
     }
+
+    /** Method to test testKeepOnlyGreen */
+    public static void testKeepOnlyGreen()
+    {
+        Picture kali = new Picture("seagull.jpg");
+        kali.explore();
+        kali.keepOnlyGreen();
+        kali.explore();
+    }
+    
+    /** Method to test zeroRed */
+    public static void testZeroRed()
+    {
+        Picture beach = new Picture("beach.jpg");
+        beach.explore();
+        beach.zeroRed();
+        beach.explore();
+    }
+    
+    /** Method to test zeroGreen */
+    public static void testZeroGreen()
+    {
+        Picture beach = new Picture("beach.jpg");
+        beach.explore();
+        beach.zeroGreen();
+        beach.explore();
+    }
+    
+//     /** Method to test testCropAndCopy */
+//     public static void testCropAndCopy()
+//     {
+//         Picture kali = new Picture("kali.jpg");
+//         kali.explore();
+//         kali.cropAndCopy(kali, 10, 100, 20, 200, 30, 40);
+//         kali.explore();
+//     }
         
     /** Main method for testing.  Every class can have a main
      * method in Java */
@@ -154,13 +190,15 @@ public class PictureTester
         // and comment out the ones you don't want
         // to run
         testZeroBlue();
+        testZeroGreen();
+        testZeroRed();
         testMirrorVerticalRightToLeft();
         testMirrorHorizontal();
         testMirrorHorizontalBottomToTop();
         testMirrorDiagonal();
         testKeepOnlyBlue();
-        //testKeepOnlyRed();
-        //testKeepOnlyGreen();
+        testKeepOnlyRed();
+        testKeepOnlyGreen();
         testNegate();
         testGrayscale();
         //testFixUnderwater();
@@ -178,6 +216,6 @@ public class PictureTester
         //testSetRedToHalfValueInTopHalf();
         //testClearBlueOverValue(200);
         //testGetAverageForColumn(0);
-        testCropAndCopy();
+        //testCropAndCopy();
     }
 }
