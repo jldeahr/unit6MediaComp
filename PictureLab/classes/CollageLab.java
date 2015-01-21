@@ -27,8 +27,9 @@ public class CollageLab
         
         change1.mirrorVertical();
         change1.grayscale();
-        change2.mirrorDiagonal();
+        change2.mirrorDiagonal();        
         change2.keepOnlyBlue();
+        change2.fixUnderwater();
         change3.mirrorHorizontal();
         change3.zeroBlue();
         change4.mirrorVertical();
@@ -36,12 +37,12 @@ public class CollageLab
         change5.mirrorHorizontal();
         change5.keepOnlyRed();
         
-        canvas.copy(original,0,0);        
-        canvas.copy(change1,0,width);
-        canvas.copy(change2,height,0);
-        canvas.copy(change3,height,width);
-        canvas.copy(change4,0,width*2);
-        canvas.copy(change5,height,width*2);
+        canvas.copy(change1,0,0);        
+        canvas.copy(original,0,width);
+        canvas.copy(change4,height,0);
+        canvas.copy(change5,height,width);
+        canvas.copy(change3,0,width*2);
+        canvas.copy(change2,height,width*2);
                 
         canvas.explore();
         

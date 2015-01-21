@@ -173,6 +173,24 @@ public class PictureTester
         beach.explore();
     }
     
+    /** Method to test posterize */
+    public static void testPosterize()
+    {
+        Picture beach = new Picture("beach.jpg");
+        beach.explore();
+        beach.posterize(1);
+        beach.explore();
+    }
+    
+    /** Method to test sepia */
+    public static void testSepia()
+    {
+        Picture beach = new Picture("beach.jpg");
+        beach.explore();
+        beach.sepia();
+        beach.explore();
+    }
+    
 //     /** Method to test testCropAndCopy */
 //     public static void testCropAndCopy()
 //     {
@@ -201,11 +219,11 @@ public class PictureTester
         testKeepOnlyGreen();
         testNegate();
         testGrayscale();
-        //testFixUnderwater();
-        //testMirrorVertical();
+        testFixUnderwater();
         testMirrorTemple();
         testMirrorArms();
-        testMirrorGull();;
+        testMirrorGull();
+        testSepia();
         //testCollage();
         //testCopy();
         //testEdgeDetection();

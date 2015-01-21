@@ -391,7 +391,7 @@ public class Picture extends SimplePicture
             }
         }
     }
-    
+
     /**
      * negates all pixels in image
      * 
@@ -411,14 +411,14 @@ public class Picture extends SimplePicture
                 green = pixelObj.getGreen();
                 red = pixelObj.getRed();
                 blue = pixelObj.getBlue();               
-                
+
                 pixelObj.setGreen(255 - green);
                 pixelObj.setRed(255 - red);
                 pixelObj.setBlue(255 - blue);
             }
         }
     }
-    
+
     /**
      * turns picture into shades of gray
      * 
@@ -446,7 +446,7 @@ public class Picture extends SimplePicture
             }
         }
     }
-    
+
     /**
      * fixes images so fish are seen better
      * 
@@ -465,7 +465,7 @@ public class Picture extends SimplePicture
             }
         }
     }
-    
+
     /**
      * keeps only red pixels
      * 
@@ -484,7 +484,7 @@ public class Picture extends SimplePicture
             }
         }
     }
-    
+
     /**
      * keeps only green pixels
      * 
@@ -503,7 +503,7 @@ public class Picture extends SimplePicture
             }
         }
     }
-    
+
     /** Method to set the red to 0 */
     public void zeroRed()
     {
@@ -516,7 +516,7 @@ public class Picture extends SimplePicture
             }
         }
     }
-    
+
     /** Method to set the green to 0 */
     public void zeroGreen()
     {
@@ -529,92 +529,140 @@ public class Picture extends SimplePicture
             }
         }
     }
-    
+
     /** Method to posterize the picture */
-    public void posterize()
+    public void posterize(int loop)
     {
         Pixel[][] pixels = this.getPixels2D();
-        for (int row = 0; row < pixels.length; row++)
+        for (int i = 0; i < loop; i++)
         {
-            for (int col = 0; col < width / 2; col++)
+            for (Pixel[] rowArray : pixels)
             {
-                if (pixels[row][col].getGreen >= 0 && pixels[row][col].getGreen <= 63)
+                for (Pixel pixelObj : rowArray)
                 {
-                    pixels[row][col]setGreen == 25;                    
+                    if (pixelObj.getGreen() >= 0 && pixelObj.getGreen() <= 63)
+                    {
+                        pixelObj.setGreen((63/2));                    
+                    }
+                    else if (pixelObj.getGreen() >= 64 && pixelObj.getGreen() <= 127)
+                    {
+                        pixelObj.setGreen(((127-64)+64)/2);
+                    }
+                    else if (pixelObj.getGreen() >= 128 && pixelObj.getGreen() <= 191)
+                    {
+                        pixelObj.setGreen(((191-128)+128)/2);
+                    }
+                    else if (pixelObj.getGreen() >= 192 && pixelObj.getGreen() <= 255)
+                    {
+                        pixelObj.setGreen(((255-192)+192)/2);
+                    }
+
+                    if (pixelObj.getBlue() >= 0 && pixelObj.getBlue() <= 63)
+                    {
+                        pixelObj.setBlue((63/2));                    
+                    }
+                    else if (pixelObj.getBlue() >= 64 && pixelObj.getBlue() <= 127)
+                    {
+                        pixelObj.setBlue(((127-64)+64)/2);
+                    }
+                    else if (pixelObj.getBlue() >= 128 && pixelObj.getBlue() <= 191)
+                    {
+                        pixelObj.setBlue(((191-128)+128)/2);
+                    }
+                    else if (pixelObj.getBlue() >= 192 && pixelObj.getBlue() <= 255)
+                    {
+                        pixelObj.setBlue(((255-192)+192)/2);
+                    }
+
+                    if (pixelObj.getRed() >= 0 && pixelObj.getRed() <= 63)
+                    {
+                        pixelObj.setRed((63/2));                    
+                    }
+                    else if (pixelObj.getRed() >= 64 && pixelObj.getRed() <= 127)
+                    {
+                        pixelObj.setRed(((127-64)+64)/2);
+                    }
+                    else if (pixelObj.getRed() >= 128 && pixelObj.getRed() <= 191)
+                    {
+                        pixelObj.setRed(((191-128)+128)/2);
+                    }
+                    else if (pixelObj.getRed() >= 192 && pixelObj.getRed() <= 255)
+                    {
+                        pixelObj.setRed(((255-192)+192)/2);
+                    }
                 }
-                else if (pixels[row][col].getGreen >= 64 && pixels[row][col].getGreen <= 127)
-                {
-                    pixels[row][col]setGreen == 75;
-                }
-                else if (pixels[row][col].getGreen >= 128 && pixels[row][col].getGreen <= 191)
-                {
-                    pixels[row][col]setGreen == 150;
-                }
-                else if (pixels[row][col].getGreen >= 129 && pixels[row][col].getGreen <= 255)
-                {
-                    pixels[row][col]setGreen == 200;
-                }
-                
-                if (pixels[row][col].getRed == 0 && pixels[row][col].getRed <= 63)
-                {
-                    pixels[row][col]setRed == 25;
-                }
-                else if (pixels[row][col].getRed == 0 && pixels[row][col].getRed <= 127)
-                {
-                    pixels[row][col]setRed == 25;
-                }
-                else if (pixels[row][col].getRed == 0 && pixels[row][col].getRed <= 191)
-                {
-                    pixels[row][col]setRed == 25;
-                }
-                else if (pixels[row][col].getRed == 0 && pixels[row][col].getRed <= 255)
-                {
-                    pixels[row][col]setRed == 25;
-                }
-                
-                if (pixels[row][col].getBlue == 0 && pixels[row][col].getBlue <= 63)
-                {
-                    pixels[row][col]setBlue == 25;
-                }
-                else if (pixels[row][col].getBlue == 0 && pixels[row][col].getBlue <= 127)
-                {
-                    pixels[row][col]setBlue == 25;
-                }
-                else if (pixels[row][col].getBlue == 0 && pixels[row][col].getBlue <= 191)
-                {
-                    pixels[row][col]setBlue == 25;
-                }
-                else if (pixels[row][col].getBlue == 0 && pixels[row][col].getBlue <= 255)
-                {
-                    pixels[row][col]setBlue == 25;
-                }
-            }
-        } 
+            } 
+        }
     }
 
-//     /**
-//      * copies a region of the specified source Picture object into this Picture object
-//      * at the specified location
-//      * 
-//      * @pre pixels is created
-//      * @post picture is cropped
-//      * 
-//      */
-//     public void cropAndCopy(Picture sourcePicture, int startSourceRow, int endSourceRow,
-//                             int startSourceCol, int endSourceCol, int startDestRow,
-//                             int startDestCol)
-//     {
-//        Picture destPicture = this.copy(pixelsSource, startDestRow, startDestCol);
-        
-//         for (int row = startSourceRow; row <= endSourceRow; row++)
-//         {
-//             for (int col = startSourceCol; col <= endSourceCol; col++)
-//             {
-//                 pixelsDestination[startDestRow + row][startDestCol + col] = pixelsSource[row][col];
-//             }
-//         }
-//    }
-    
+    /** Method to sepia the picture */
+    public void sepia()
+    {
+        Pixel[][] pixels = this.getPixels2D();
+        double r = 0;
+        double b = 0;
+        double g = 0;
+        for (Pixel[] rowArray : pixels)
+        {
+            for (Pixel pixelObj : rowArray)
+            {
+                if (pixelObj.getRed() >= 0 && pixelObj.getRed() <= 60)
+                {
+                    b = pixelObj.getBlue();
+                    r = pixelObj.getRed();
+                    g = pixelObj.getGreen();
+                    
+                    b = b*0.45;
+                    r = r*0.45;
+                    g = g*0.45;
+                    
+                    pixelObj.setBlue((int)(b));
+                    pixelObj.setRed((int)(r));
+                    pixelObj.setGreen((int)(g));
+                }
+                else if (pixelObj.getRed() >= 60 && pixelObj.getRed() <= 190)
+                {
+                    b = pixelObj.getBlue();
+                    b = b*0.35;
+                    pixelObj.setBlue((int)(b));
+                    pixelObj.setRed(pixelObj.getRed() + 30);
+                    pixelObj.setGreen(pixelObj.getGreen() - 30);
+                }
+                else
+                {
+                    b = pixelObj.getBlue();
+                    b = b*0.45;
+                    pixelObj.setBlue((int)(b));
+                    pixelObj.setRed(pixelObj.getRed() + 30);
+                    pixelObj.setGreen(pixelObj.getGreen() - 30);
+                }
+            }
+        }
+    }
+
+    //     /**
+    //      * copies a region of the specified source Picture object into this Picture object
+    //      * at the specified location
+    //      * 
+    //      * @pre pixels is created
+    //      * @post picture is cropped
+    //      * 
+    //      */
+    //     public void cropAndCopy(Picture sourcePicture, int startSourceRow, int endSourceRow,
+    //                             int startSourceCol, int endSourceCol, int startDestRow,
+    //                             int startDestCol)
+    //     {
+    //        Picture destPicture = this.copy(pixelsSource, startDestRow, startDestCol);
+
+    //         for (int row = startSourceRow; row <= endSourceRow; row++)
+    //         {
+    //             for (int col = startSourceCol; col <= endSourceCol; col++)
+    //             {
+    //                 pixelsDestination[startDestRow + row][startDestCol + col] = pixelsSource[row][col];
+    //             }
+    //         }
+    //    }
+
     /* Main method for testing - each class in Java can have a main 
      * method 
      */
